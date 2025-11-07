@@ -1,0 +1,16 @@
+#!/bin/bash
+
+DB_PASSWORD=`openssl rand -base64 15`
+CURRENT_DIR=`pwd`
+
+echo "DB_PASSWORD=${DB_PASSWORD}"
+echo "CURRENT_DIR=${CURRENT_DIR}"
+
+docker run \
+  --rm \
+  --name django-todo-db \
+  --env POSTGRES_PASSWORD="${DB_PASSWORD}" \
+  --env POSTGRES_DB=django_todo \
+  --volume "django-pg-data:/opt/container_data/postgresql/data" \
+  --publish 5432:5432 \
+  postgres:bookworm
