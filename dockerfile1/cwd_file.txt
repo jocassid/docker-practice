@@ -1,0 +1,1 @@
+drop this in cwd and see where it winds up.  root dir?
