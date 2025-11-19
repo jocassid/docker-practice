@@ -1,9 +1,8 @@
+
 # docker-practice
 
 Notes from online sources are in this readme.  Notes from books are in
 https://docs.google.com/document/d/17vFd-ejqFVAITu_Bfn8Mj_L7LJjvmxhtjEwPI_VEy9M/edit?tab=t.0
-
-
 
 ## Terminology
 
@@ -12,8 +11,48 @@ https://docs.google.com/document/d/17vFd-ejqFVAITu_Bfn8Mj_L7LJjvmxhtjEwPI_VEy9M/
 | image     | the collection of software and configuration data |
 | container | the running image                                 |
 
+## Docker Commands in General
 
-Get a shell on a linux container
+* docker commands typically need `sudo` to run
+* `--help` will display help for `docker` and it's various sub-commands
+
+## Build Commands
+<style>
+    /*  PyCharm doesn't seem to like external spreadsheets */
+    table.commands > thead > tr > th:nth-of-type(1){
+        width: 30%;
+    }
+
+</style>
+<table class="commands">
+    <thead>
+        <tr>
+            <th>Command</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><code>docker build .</code></td>
+            <td>Simplest build command.  Context is current directory.  Output 
+            of build command includes a sha256 hash which can be used in 
+            command similar to <code>docker run sha256:dfed...29fc</code></td>
+        </tr>
+        <tr>
+            <td><code></code></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td><code></code></td>
+            <td></td>
+        </tr>
+    </tbody>
+</table>
+
+
+
+
+## Get a shell on a linux container
 ```bash
 # -i    interactive
 # -t    allocate a pseudo-tty
