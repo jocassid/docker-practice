@@ -4,7 +4,11 @@
 Notes from online sources are in this readme.  Notes from books are in
 https://docs.google.com/document/d/17vFd-ejqFVAITu_Bfn8Mj_L7LJjvmxhtjEwPI_VEy9M/edit?tab=t.0
 
-## Terminology
+## Installation
+
+Packages I needed to install to get this working:
+* docker.io
+* docker-buildx
 
 | Term      | Definition                                        |
 |-----------|---------------------------------------------------|
@@ -16,11 +20,12 @@ https://docs.google.com/document/d/17vFd-ejqFVAITu_Bfn8Mj_L7LJjvmxhtjEwPI_VEy9M/
 * docker commands typically need `sudo` to run
 * `--help` will display help for `docker` and it's various sub-commands
 
+
 ## Build Commands
 <style>
     /*  PyCharm doesn't seem to like external spreadsheets */
     table.commands > thead > tr > th:nth-of-type(1){
-        width: 30%;
+        width: 40%;
     }
 
 </style>
@@ -35,7 +40,7 @@ https://docs.google.com/document/d/17vFd-ejqFVAITu_Bfn8Mj_L7LJjvmxhtjEwPI_VEy9M/
         <tr>
             <td><code>docker build .</code></td>
             <td>Simplest build command.  Context is current directory.  Output 
-            of build command includes a sha256 hash which can be used in 
+            of build command includes a sha256 hash (The image ID) which can be used in 
             command similar to <code>docker run sha256:dfed...29fc</code></td>
         </tr>
         <tr>
@@ -49,7 +54,27 @@ https://docs.google.com/document/d/17vFd-ejqFVAITu_Bfn8Mj_L7LJjvmxhtjEwPI_VEy9M/
     </tbody>
 </table>
 
+## Tag Commands
 
+<table class="commands">
+    <thead>
+        <tr>
+            <th>Command</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><code>docker tag IMAGE_ID TAG_NAME</code></td>
+            <td>Assigns a tag name to an image.  Example 
+            <code>docker tag sha256:45ce...ffca dockerfile1_img</code></td>
+        </tr>
+        <tr>
+            <td><code></code></td>
+            <td></td>
+        </tr>
+    </tbody>
+</table>
 
 
 ## Get a shell on a linux container
