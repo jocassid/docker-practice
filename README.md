@@ -1,3 +1,10 @@
+<style>
+    /*  PyCharm doesn't seem to like external stylesheets */
+    table.commands > thead > tr > th:nth-of-type(1){
+        width: 40%;
+    }
+
+</style>
 
 # docker-practice
 
@@ -34,6 +41,75 @@ Packages I needed to install to get this working:
 * `docker image --help` help on `image` sub-command
 * `docker image ls --` help on `image ls` 
 
+## Dockerfiles
+
+A brief summary of Docker File instructions, for details 
+check https://docs.docker.com/reference/dockerfile/
+
+<table class="commands">
+    <thead>
+        <tr>
+            <th style="width: 20%">Instruction</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><code>FROM</code></td>
+            <td>
+                <code>FROM</code> indicates the base image to use for your 
+                container.  All images are built from a base image.</td>
+        </tr>
+        <tr>
+            <td><code>WORKDIR</code></td>
+            <td>
+                Set current working directory for <code>RUN</code>, 
+                <code>CMD</code>, etc.  Working dir may be changed as the 
+                makefile runs.
+            </td>
+        </tr>
+        <tr>
+            <td><code>COPY</code></td>
+            <td>
+                Copy files from the host filesystem to the container 
+                filesystem
+            </td>
+        </tr>
+        <tr>
+            <td><code>ADD</code></td>
+            <td>
+                Like <code>COPY</code>, but automatically extracts tarballs 
+                and can fetch files via URL
+            </td>
+        </tr>
+        <tr>
+            <td><code>RUN</code></td>
+            <td>Run command as **container (not image)** is being built</td>
+        </tr>
+        <tr>
+            <td><code>CMD</code></td>
+            <td>Defines a command to be run when the container runs.</td>
+        </tr>
+        <tr>
+            <td><code>ENTRYPOINT</code></td>
+            <td>
+                With <code>CMD</code>, <code>docker run ls</code> will run 
+                the <code>ls</code> command.  This is a way to override the 
+                <code>CMD</code>.  <code>ENTRYPOINT</code> allows you to 
+                pass args to the executable.
+            </td>
+        </tr>
+        <tr>
+            <td><code>ENV</code></td>
+            <td>Set environment variable</td>
+        </tr>
+        <tr>
+            <td><code></code></td>
+            <td></td>
+        </tr>
+    </tbody>
+</table>
+
 
 | Dockerfile Instructions | Description                                                                                                                                                       |
 |-------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -41,13 +117,6 @@ Packages I needed to install to get this working:
 | `EXPOSE`                | Opens port on container                                                                                                                                           |
 
 ## Build Commands
-<style>
-    /*  PyCharm doesn't seem to like external stylesheets */
-    table.commands > thead > tr > th:nth-of-type(1){
-        width: 40%;
-    }
-
-</style>
 <table class="commands">
     <thead>
         <tr>
@@ -167,8 +236,12 @@ Unlike `docker image` and `docker images`, there isn't a `docker containers` ali
     </thead>
     <tbody>
         <tr>
-            <td><code></code></td>
-            <td></td>
+            <td><code>docker run -it IMAGE</code></td>
+            <td>
+                Access a shell within the container.  This combines the 
+                <code>-i</code>, <code>--interactive</code> and
+                <code>-t</code>, <code>--tty</code> options.
+            </td>
         </tr>
         <tr>
             <td><code></code></td>
