@@ -35,6 +35,11 @@ Packages I needed to install to get this working:
 * `docker image ls --` help on `image ls` 
 
 
+| Dockerfile Instructions | Description                                                                                                                                                       |
+|-------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `VOLUME`                | Create a "directory" that persists beyond the runtime of the container.  This "directory" is managed by Docker and not a regular directory in the Host filesystem |
+| `EXPOSE`                | Opens port on container                                                                                                                                           |
+
 ## Build Commands
 <style>
     /*  PyCharm doesn't seem to like external stylesheets */
