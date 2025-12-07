@@ -104,17 +104,28 @@ check https://docs.docker.com/reference/dockerfile/
             <td>Set environment variable</td>
         </tr>
         <tr>
+            <td><code>VOLUME</code></td>
+            <td>
+                Create a "directory" that persists beyond the runtime of the 
+                container.  This "directory" is managed by Docker and not a 
+                regular directory in the Host filesystem
+            </td>
+        </tr>
+        <tr>
+            <td><code>EXPOSE</code></td>
+            <td>Opens port on containe</td>
+        </tr>
+        <tr>
+            <td><code></code></td>
+            <td></td>
+        </tr>
+        <tr>
             <td><code></code></td>
             <td></td>
         </tr>
     </tbody>
 </table>
 
-
-| Dockerfile Instructions | Description                                                                                                                                                       |
-|-------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `VOLUME`                | Create a "directory" that persists beyond the runtime of the container.  This "directory" is managed by Docker and not a regular directory in the Host filesystem |
-| `EXPOSE`                | Opens port on container                                                                                                                                           |
 
 ## Build Commands
 <table class="commands">
