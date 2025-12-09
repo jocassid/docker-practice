@@ -13,11 +13,12 @@ https://docs.google.com/document/d/17vFd-ejqFVAITu_Bfn8Mj_L7LJjvmxhtjEwPI_VEy9M/
 
 ## Practice Dockerfiles
 
-| Dockerfile Directory | Description                                                                                   |
-|----------------------|-----------------------------------------------------------------------------------------------|
-| dockerfile0          | Very simple docker file.  Takes Ubuntu container and runs a `echo` command                    |
-| dockerfile1          | Ubuntu image where I install python, copy a `hello-world.py` script into container and run it |
-| dockerfile2          | Un-modified Ubuntu image, used to practice learn how to access shell within container         | 
+| Dockerfile Directory   | Description                                                                                   |
+|------------------------|-----------------------------------------------------------------------------------------------|
+| dockerfile0            | Very simple docker file.  Takes Ubuntu container and runs a `echo` command                    |
+| dockerfile1            | Ubuntu image where I install python, copy a `hello-world.py` script into container and run it |
+| dockerfile2            | Un-modified Ubuntu image, used to practice learn how to access shell within container         |
+| dockerfile3_flask_page | Docker file for a container with a simple Flask page                                          |
 
 ## Terminology
 
@@ -96,24 +97,31 @@ check https://docs.docker.com/reference/dockerfile/
                 With <code>CMD</code>, <code>docker run ls</code> will run 
                 the <code>ls</code> command.  This is a way to override the 
                 <code>CMD</code>.  <code>ENTRYPOINT</code> allows you to 
-                pass args to the executable.
+                pass args to the executable.  Example <code>ENTRYPOINT 
+                ["curl", "-s"]</code>
             </td>
         </tr>
         <tr>
             <td><code>ENV</code></td>
-            <td>Set environment variable</td>
+            <td>Set environment variable.  Examples:
+                <ul>
+                    <li><code>ENV DJANGO_SETTINGS_MODULE main.settings</code></li>
+                    <li><code>ENV FOO=bar PLACEHOLDER=yadayada</code></li>
+                </ul>
+            </td>
         </tr>
         <tr>
             <td><code>VOLUME</code></td>
             <td>
                 Create a "directory" that persists beyond the runtime of the 
                 container.  This "directory" is managed by Docker and not a 
-                regular directory in the Host filesystem
+                regular directory in the Host filesystem.  Example 
+                <code>VOLUME /var/logs/nginx</code>
             </td>
         </tr>
         <tr>
             <td><code>EXPOSE</code></td>
-            <td>Opens port on containe</td>
+            <td>Opens port on container.  Example <code>EXPOSE 43/tcp</code></td>
         </tr>
         <tr>
             <td><code></code></td>
@@ -253,6 +261,24 @@ Unlike `docker image` and `docker images`, there isn't a `docker containers` ali
                 <code>-i</code>, <code>--interactive</code> and
                 <code>-t</code>, <code>--tty</code> options.
             </td>
+        </tr>
+        <tr>
+            <td><code>docker run -d -p 8080:80 IMAGE</code></td>
+            <td><code>-d</code>, <code>--detach</code> options runs the 
+                container in the background.  <code>-p</code>, 
+                <code>--publish</code>maps port 8080 on the host to 
+                port 80 on the container.</td>
+        </tr>
+        <tr>
+            <td><code>docker run --name NAME IMAGE</code></td>
+            <td>By default, Docker assigns a random name to the container.  
+                This can be overridden with the <code>--name</code> option.
+                Example: <code>docker run --name production_database 
+                database:latest</code></td>
+        </tr>
+        <tr>
+            <td><code></code></td>
+            <td></td>
         </tr>
         <tr>
             <td><code></code></td>
