@@ -1,0 +1,10 @@
+#!/bin/bash
+
+if ((EUID != 0)); then
+  	echo "This script should be run via sudo or as root" 1>&2
+  	exit 1
+fi
+
+docker build -f Dockerfile.base -t hello_flask:base .
+
+docker build -f Dockerfile.dev -t hello_flask:dev .

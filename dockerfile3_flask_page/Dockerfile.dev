@@ -1,0 +1,6 @@
+
+FROM hello_flask:base
+
+RUN pip install pytest
+
+CMD ["flask"]

@@ -89,7 +89,10 @@ check https://docs.docker.com/reference/dockerfile/
         </tr>
         <tr>
             <td><code>CMD</code></td>
-            <td>Defines a command to be run when the container runs.</td>
+            <td>Defines a command to be run when the container runs.  
+                Example: <code>CMD ["python", "my_script.py", "arg1", 
+                "arg2"]</code>  Note that <code>CMD</code> arguments are in 
+                double quotes</td>
         </tr>
         <tr>
             <td><code>ENTRYPOINT</code></td>
