@@ -1,0 +1,6 @@
+
+echo "running .ashrc"
+
+if [ -f ~/.ash_aliases ]; then
+	. ~/.ash_aliases
+fi

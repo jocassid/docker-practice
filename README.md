@@ -191,8 +191,12 @@ check https://docs.docker.com/reference/dockerfile/
             <td>List images with tags that begin with foo</td>
         </tr>
         <tr>
-            <td><code>docker image --all</code></td>
+            <td><code>docker image ls --all</code></td>
             <td>Show all images (default is to only show images that are tagged)</td>
+        </tr>
+        <tr>
+            <td><code>docker image pull postgres:16.11-alpine3.23</code></td>
+            <td>Download postgres image from docker hub</td>
         </tr>
         <tr>
             <td><code></code></td>

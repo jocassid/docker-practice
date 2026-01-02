@@ -1,6 +1,32 @@
 
 FROM hello_flask:base
 
+# ---------------------------
+# Things all Developers need
+# ---------------------------
+
 RUN pip install pytest
 
-CMD ["flask"]
+COPY hello_flask.py /opt/
+
+EXPOSE 5000/tcp
+
+# --------------------------
+# Developer-specific setup
+# --------------------------
+
+RUN apk add screen
+
+COPY .profile .ashrc .ash_aliases /root/
+
+# ash options
+#   -l login shell
+#   -i interactive
+CMD ["/bin/ash", "-l", "-i"]
+
+
+# docker run command
+# docker run -it --ip 172.17.0.2 -p 5000:5000  hello_flask:dev
+
+# Run app w/ these options (I'm not sure if IP will be the same)
+# flask --app hello_flask run --host 172.17.0.2 --port 5000

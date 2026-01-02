@@ -1,0 +1,5 @@
+echo "running .ash_aliases"
+
+alias cpl='clear; pwd; ls'
+alias cpll='clear; pwd; ls -l'
+
