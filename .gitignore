@@ -1,2 +1,3 @@
 .idea
 /django_app/asset_tracker/.env
+dockerfile3_flask_page/venv/

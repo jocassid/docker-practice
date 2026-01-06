@@ -5,9 +5,9 @@ FROM hello_flask:base
 # Things all Developers need
 # ---------------------------
 
-RUN pip install pytest
+COPY requirements-dev.txt $DEPLOY_DIR
 
-COPY hello_flask.py /opt/
+RUN pip install -r requirements-dev.txt
 
 EXPOSE 5000/tcp
 
@@ -25,8 +25,15 @@ COPY .profile .ashrc .ash_aliases /root/
 CMD ["/bin/ash", "-l", "-i"]
 
 
-# docker run command
+# docker run command (IP unknown)
+# docker run -it -p 5000:5000 hello_flask:dev
+
+# docker run (known IP)
 # docker run -it --ip 172.17.0.2 -p 5000:5000  hello_flask:dev
 
+# binding source code
+# docker run -it -p 5000:5000 --mount type=bind,src=~/Projects/docker-practice,dst=/opt/hello_flask/ hello_flask:dev
+
+
 # Run app w/ these options (I'm not sure if IP will be the same)
-# flask --app hello_flask run --host 172.17.0.2 --port 5000
+# flask --app hello_flask run --host 172.17.0.2 --port 5000 --debug

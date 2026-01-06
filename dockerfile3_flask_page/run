@@ -1,0 +1,13 @@
+#!/bin/bash
+
+if ((EUID != 0)); then
+  	echo "This script should be run via sudo or as root" 1>&2
+  	exit 1
+fi
+
+BIND_SRC=/home/john/Projects/docker-practice/dockerfile3_flask_page/
+BIND_DST=/opt/hello_flask/
+
+docker run -it -p 5000:5000 \
+	--mount type=bind,src=$BIND_SRC,dst=$BIND_DST \
+	hello_flask:dev
