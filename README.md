@@ -13,15 +13,15 @@ https://docs.google.com/document/d/17vFd-ejqFVAITu_Bfn8Mj_L7LJjvmxhtjEwPI_VEy9M/
 
 ## Practice Dockerfiles
 
-| Dockerfile Directory   | Description                                                                                   |
-|------------------------|-----------------------------------------------------------------------------------------------|
-| dockerfile0            | Very simple docker file.  Takes Ubuntu container and runs a `echo` command                    |
-| dockerfile1            | Ubuntu image where I install python, copy a `hello-world.py` script into container and run it |
-| dockerfile2            | Un-modified Ubuntu image, used to practice learn how to access shell within container         |
-| dockerfile3_flask_page | Docker file for a container with a simple Flask page                                          |
+| Dockerfile Directory   | Description                                                                                         |
+|------------------------|-----------------------------------------------------------------------------------------------------|
+| dockerfile0            | Very simple docker file.  Takes Ubuntu container and runs a `echo` command                          |
+| dockerfile1            | Ubuntu image where I install python, copy a `hello-world.py` script into container and run it       |
+| dockerfile2            | Un-modified Ubuntu image, used to practice learn how to access shell within container               |
+| dockerfile3_flask_page | Docker file for a container with a simple Flask page.  Also experiments with base & dev Dockerfiles |
+| dockerfile4_volumes    | Experiment w/ Docker volumes                                                                        |
 
 ## Terminology
-
 | Term      | Definition                                        |
 |-----------|---------------------------------------------------|
 | image     | the collection of software and configuration data |
@@ -137,29 +137,30 @@ check https://docs.docker.com/reference/dockerfile/
     </tbody>
 </table>
 
+## Docker Commands `docker` ...
 
-## Build Commands
+### `build` ...
 <table class="commands">
     <thead>
         <tr>
-            <th>Command</th>
+            <th>Arguments</th>
             <th>Description</th>
         </tr>
     </thead>
     <tbody>
         <tr>
-            <td><code>docker build .</code></td>
+            <td><code>.</code></td>
             <td>Simplest build command.  Context is current directory.  Output 
             of build command includes a sha256 hash (The image ID) which can be used in 
             command similar to <code>docker run sha256:dfed...29fc</code></td>
         </tr>
         <tr>
-            <td><code>docker build -f Dockerfile.v1 .</code></td>
+            <td><code>-f Dockerfile.v1 .</code></td>
             <td><code>-f</code> option allows you to specify a docker file.  
             Otherwise, docker will look for a Dockerfile in the current directory</td>
         </tr>
         <tr>
-            <td><code>docker build -t jocassid/hello_world .</code></td>
+            <td><code>-t jocassid/hello_world .</code></td>
             <td>Build an image tagging it as  jocassid/hello_world</td>
         </tr>
         <tr>
@@ -173,7 +174,7 @@ check https://docs.docker.com/reference/dockerfile/
     </tbody>
 </table>
 
-## Image Commands
+### `image` ...
 
 `images` is an alias for `images`.  You can use `docker image` and 
 `docker images` interchangeably
@@ -181,21 +182,21 @@ check https://docs.docker.com/reference/dockerfile/
 <table class="commands">
     <thead>
         <tr>
-            <th>Command</th>
+            <th>Subcommand</th>
             <th>Description</th>
         </tr>
     </thead>
     <tbody>
         <tr>
-            <td><code>docker image "foo*"</code></td>
+            <td><code>ls "foo*"</code></td>
             <td>List images with tags that begin with foo</td>
         </tr>
         <tr>
-            <td><code>docker image ls --all</code></td>
+            <td><code>ls --all</code></td>
             <td>Show all images (default is to only show images that are tagged)</td>
         </tr>
         <tr>
-            <td><code>docker image pull postgres:16.11-alpine3.23</code></td>
+            <td><code>pull postgres:16.11-alpine3.23</code></td>
             <td>Download postgres image from docker hub</td>
         </tr>
         <tr>
@@ -205,14 +206,14 @@ check https://docs.docker.com/reference/dockerfile/
     </tbody>
 </table>
 
-## Container Commands
+### `container` ...
 
 Unlike `docker image` and `docker images`, there isn't a `docker containers` alias 
 
 <table class="commands">
     <thead>
         <tr>
-            <th>Command</th>
+            <th>arguments</th>
             <th>Description</th>
         </tr>
     </thead>
@@ -228,18 +229,18 @@ Unlike `docker image` and `docker images`, there isn't a `docker containers` ali
     </tbody>
 </table>
 
-## Tag Commands
+### `tag` ...
 
 <table class="commands">
     <thead>
         <tr>
-            <th>Command</th>
+            <th>Arguments</th>
             <th>Description</th>
         </tr>
     </thead>
     <tbody>
         <tr>
-            <td><code>docker tag IMAGE_ID TAG_NAME</code></td>
+            <td><code>IMAGE_ID TAG_NAME</code></td>
             <td>Assigns a tag name to an image after it has been built.  Example 
             <code>docker tag sha256:45ce...ffca dockerfile1_img</code></td>
         </tr>
@@ -250,6 +251,38 @@ Unlike `docker image` and `docker images`, there isn't a `docker containers` ali
     </tbody>
 </table>
 
+
+### `volume` ...
+
+<table class="commands">
+    <thead>
+        <tr>
+            <th>Subcommand</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><code>create</code></td>
+            <td>Creates volume with a name that's a long hexadecimal string <b style="color:red">Don't do this!</b></td>
+        </tr>
+        <tr>
+            <td><code>create --name=log_dir --label='Some metadata</code></td>
+            <td>Create volume, give it a name and label it with some metadata.  Note Docker 
+            doesn't like double quotes around the label</td>
+        </tr>
+        <tr>
+            <td><code>rm VOLUME_NAME</code></td>
+            <td><b>Note:</b> If you don't specify a name when the volume is 
+            created, you'll get random hexadecimal name and will have to 
+            provide the ENTIRE name when removing the volume</td>
+        </tr>
+        <tr>
+            <td><code></code></td>
+            <td></td>
+        </tr>
+    </tbody>
+</table>
 
 ## Run Commands
 
@@ -282,6 +315,14 @@ Unlike `docker image` and `docker images`, there isn't a `docker containers` ali
                 This can be overridden with the <code>--name</code> option.
                 Example: <code>docker run --name production_database 
                 database:latest</code></td>
+        </tr>
+        <tr>
+            <td><code>docker run -v $HOME:/host-home IMAGE bash</code></td>
+            <td>Mount's the user's home directory as /host-home</td>
+        </tr>
+        <tr>
+            <td><code></code></td>
+            <td></td>
         </tr>
         <tr>
             <td><code></code></td>

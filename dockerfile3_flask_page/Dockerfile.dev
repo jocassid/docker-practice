@@ -32,7 +32,7 @@ CMD ["/bin/ash", "-l", "-i"]
 # docker run -it --ip 172.17.0.2 -p 5000:5000  hello_flask:dev
 
 # binding source code
-# docker run -it -p 5000:5000 --mount type=bind,src=~/Projects/docker-practice,dst=/opt/hello_flask/ hello_flask:dev
+# docker run -it -p 5000:5000 --mount type=bind,src=~/Projects/docker-practice/dockerfile3_flask_page,dst=/opt/hello_flask/ hello_flask:dev
 
 
 # Run app w/ these options (I'm not sure if IP will be the same)
