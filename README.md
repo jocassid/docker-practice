@@ -11,6 +11,9 @@
 Notes from online sources are in this readme.  Notes from books are in
 https://docs.google.com/document/d/17vFd-ejqFVAITu_Bfn8Mj_L7LJjvmxhtjEwPI_VEy9M/edit?tab=t.0
 
+## Articles
+* https://www.freecodecamp.org/news/how-to-dockerize-your-django-project/
+
 ## Practice Dockerfiles
 
 | Dockerfile Directory   | Description                                                                                         |
