@@ -11,6 +11,11 @@
 Notes from online sources are in this readme.  Notes from books are in
 https://docs.google.com/document/d/17vFd-ejqFVAITu_Bfn8Mj_L7LJjvmxhtjEwPI_VEy9M/edit?tab=t.0
 
+## Reference
+
+* Docker CLI: (https://docs.docker.com/engine/reference/commandline/cli/
+* Dockerfile: https://docs.docker.com/engine/reference/builder/
+
 ## Articles
 * https://www.freecodecamp.org/news/how-to-dockerize-your-django-project/
 
@@ -44,6 +49,7 @@ Packages I needed to install to get this working:
 * `--help` will display help for `docker` and it's various sub-commands
 * `docker image --help` help on `image` sub-command
 * `docker image ls --` help on `image ls` 
+* `--label=` options cannot cotain whitespace.  Use underscores instead i.e. `--label=foo_bar`
 
 ## Dockerfiles
 
@@ -119,15 +125,20 @@ check https://docs.docker.com/reference/dockerfile/
         <tr>
             <td><code>VOLUME</code></td>
             <td>
-                Create a "directory" that persists beyond the runtime of the 
-                container.  This "directory" is managed by Docker and not a 
-                regular directory in the Host filesystem.  Example 
-                <code>VOLUME /var/logs/nginx</code>
+                Create a <b>MOUNT POINT</b> for a volume.  The actual volume
+                is created via a <code>docker volume create</code> command.
+                The mounting of the volume is done via a 
+                <code>-v VOLUME_NAME:MOUNT_POINT</code> argument in the 
+                <code>docker run</code> command.  i.e. <code>docker run --name CONTAINER_NAME -v data:/data ubuntu</code>
             </td>
         </tr>
         <tr>
             <td><code>EXPOSE</code></td>
             <td>Opens port on container.  Example <code>EXPOSE 43/tcp</code></td>
+        </tr>
+        <tr>
+            <td><code>USER</code></td>
+            <td>Set user for subsequent commands.  Example <code>USER root</code></td>
         </tr>
         <tr>
             <td><code></code></td>
@@ -146,7 +157,7 @@ check https://docs.docker.com/reference/dockerfile/
 <table class="commands">
     <thead>
         <tr>
-            <th>Arguments</th>
+            <th>Argument / Subcommand</th>
             <th>Description</th>
         </tr>
     </thead>
@@ -216,14 +227,15 @@ Unlike `docker image` and `docker images`, there isn't a `docker containers` ali
 <table class="commands">
     <thead>
         <tr>
-            <th>arguments</th>
+            <th>Subcommand</th>
             <th>Description</th>
         </tr>
     </thead>
     <tbody>
         <tr>
-            <td><code></code></td>
-            <td></td>
+            <td><code>ls</code></td>
+            <td>List running containers <code>--all</code> option will show 
+                containers that have finished running</td>
         </tr>
         <tr>
             <td><code></code></td>
@@ -279,6 +291,22 @@ Unlike `docker image` and `docker images`, there isn't a `docker containers` ali
             <td><b>Note:</b> If you don't specify a name when the volume is 
             created, you'll get random hexadecimal name and will have to 
             provide the ENTIRE name when removing the volume</td>
+        </tr>
+        <tr>
+            <td><code>inspect VOLUME_NAME</code></td>
+            <td>View properties of volume</td>
+        </tr>
+        <tr>
+            <td><code>prune</code></td>
+            <td>Removed unused volumes.  <b>NOTE:</b> A container doesn't 
+                need to be running to be "using" a volume.  <code>prune</code> 
+                will ask for confirmation before removing volume unless 
+                you want to live dangerously and use the 
+                <code>--force</code></td>
+        </tr>
+        <tr>
+            <td><code></code></td>
+            <td></td>
         </tr>
         <tr>
             <td><code></code></td>
