@@ -15,9 +15,15 @@ https://docs.google.com/document/d/17vFd-ejqFVAITu_Bfn8Mj_L7LJjvmxhtjEwPI_VEy9M/
 
 * Docker CLI: (https://docs.docker.com/engine/reference/commandline/cli/
 * Dockerfile: https://docs.docker.com/engine/reference/builder/
+* Volumes: https://docs.docker.com/engine/storage/volumes/
 
 ## Articles
 * https://www.freecodecamp.org/news/how-to-dockerize-your-django-project/
+* Postgres & Docker: https://wiki.postgresql.org/wiki/DockerizingPostgres
+* Volumes vs. Bind Mounts: (https://dev.to/caffinecoder54/docker-volumes-vs-bind-mounts-when-to-use-each-1ah4) 
+It recommends using volumes for database service.  Consensus seems to be volumes for production and bind mounts for 
+development where you want code changes to have immediate effect (i.e. developer's code lives in a binds mount)
+
 
 ## Practice Dockerfiles
 
@@ -401,16 +407,6 @@ docker run \
 ## Volumes and Bind Mounts Oh My
 
 Docker volumes are stored under /var/lib/docker/volumes/
-
-* [Article on differences between Volumes and Bind Mounts](https://dev.to/caffinecoder54/docker-volumes-vs-bind-mounts-when-to-use-each-1ah4) 
-It recommends using volumes for database service.  Consensus seems to be volumes for production and bind mounts for 
-development where you want code changes to have immediate effect (i.e. developer's code lives in a binds mount) 
-
-## Docker Documentation
-
-* [Volumes](https://docs.docker.com/engine/storage/volumes/)
-* [Dockerfile Reference](https://docs.docker.com/reference/dockerfile/)
-* A discussion re postgres and docker https://wiki.postgresql.org/wiki/DockerizingPostgres
 
 
 
