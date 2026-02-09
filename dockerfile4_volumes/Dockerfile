@@ -6,7 +6,7 @@ LABEL description="Experiment with volumes"
 ENV DEPLOY_DIR=/opt/fun_with_volumes/
 ENV LOG_FILE_PATH=/var/log/dockerfile4/foo.log
 
-VOLUME /var/log/dockerfile4
+#VOLUME /var/log/dockerfile4
 
 COPY read_and_write_to_volume.py $DEPLOY_DIR
 

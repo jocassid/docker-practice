@@ -1,0 +1,14 @@
+#!/bin/bash
+
+if ((EUID != 0)); then
+  	echo "This script should be run via sudo or as root" 1>&2
+  	exit 1
+fi
+
+if ! docker volume inspect dockerfile4 > /dev/null 2>&1; then
+    echo "Error: Docker volume 'dockerfile4' does not exist." 1>&2
+    echo "Please create it first, e.g., using 'docker volume create dockerfile4'" 1>&2
+    exit 1
+fi
+
+docker run -v dockerfile4:/var/log/dockerfile4 fun_with:volumes
