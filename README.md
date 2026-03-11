@@ -25,7 +25,7 @@ It recommends using volumes for database service.  Consensus seems to be volumes
 development where you want code changes to have immediate effect (i.e. developer's code lives in a binds mount)
 
 
-## Practice Dockerfiles
+## Practice Dockerfiles & Directories
 
 | Dockerfile Directory   | Description                                                                                         |
 |------------------------|-----------------------------------------------------------------------------------------------------|
@@ -34,6 +34,7 @@ development where you want code changes to have immediate effect (i.e. developer
 | dockerfile2            | Un-modified Ubuntu image, used to practice learn how to access shell within container               |
 | dockerfile3_flask_page | Docker file for a container with a simple Flask page.  Also experiments with base & dev Dockerfiles |
 | dockerfile4_volumes    | Experiment w/ Docker volumes                                                                        |
+| networking             | Experiments w/ Docker networking                                                                    |
 
 ## Terminology
 | Term      | Definition                                        |
