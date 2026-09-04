@@ -12,3 +12,4 @@ if ! docker volume inspect dockerfile4 > /dev/null 2>&1; then
 fi
 
 docker run -v dockerfile4:/var/log/dockerfile4 fun_with:volumes
+

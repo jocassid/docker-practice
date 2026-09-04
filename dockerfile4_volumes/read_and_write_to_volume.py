@@ -35,6 +35,9 @@ def main():
             file=out_file
         )
 
+    print("sleeping for 10 seconds")
+    sleep(10)
+
 
 if __name__ == "__main__":
     main()
